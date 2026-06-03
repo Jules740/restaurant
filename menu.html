@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body>
+    
+    <style>
+        :root {
+            --bg-dark: #120c06;      
+            --text-gold: #e5a93c;     
+            --text-light: #f5eae0;    
+            --text-muted: #b3a290;    
+            --border-color: #3d2d1c;  
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Georgia', serif; 
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px; 
+            box-sizing: border-box;
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-gold);
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menu-section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-bottom: 8px;
+            border-bottom: 4px double var(--border-color); 
+            margin-bottom: 25px;
+        }
+
+        .nav-order {
+            border: 1.5px solid var(--gold) !important;
+            color: var(--gold-light) !important;
+            padding: 0.35rem 1.1rem;
+            border-radius: 2px;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-order:hover {
+            background: var(--gold) !important;
+            color: var(--bg) !important;
+        }
+
+        .nav-cta:hover { background: var(--gold-light) !important; color: var(--bg) !important; }
+
+        .nav-order {
+            border: 1.5px solid var(--gold) !important; color: var(--gold-light) !important;
+            padding: 0.35rem 1.1rem; border-radius: 2px; font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+        
+        .nav-order:hover { background: var(--gold) !important; color: var(--bg) !important; }
+
+        .menu-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            font-size: 1.1rem;
+        }
+
+        .full-width-package {
+            flex: 1;
+            text-align: left;
+        }
+
+        .left-item {
+            flex: 1;
+            text-align: left;
+            color: var(--text-light);
+        }
+
+        .price-hub {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            min-width: 140px;
+            color: var(--text-gold);
+            font-weight: bold;
+        }
+
+        .price-slash {
+            color: var(--border-color);
+            font-weight: 300;
+            font-size: 1.3rem;
+        }
+
+        .right-item {
+            flex: 1;
+            text-align: right;
+            color: var(--text-light);
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 4px;
+            display: block;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 850px) {
+            .menu-title { font-size: 2.2rem; }
+            .section-header { font-size: 1.1rem; }
+            .menu-row { font-size: 1rem; padding: 12px 0; }
+            .price-hub { min-width: 110px; gap: 10px; }
+        }
+
+        :root {
+            --gold:       #c9882a;
+            --gold-light: #e8b96a;
+            --cream:      #f7efe0;
+            --cream2:     #ede0c8;
+            --bg:         #0d0905;
+            --border:     rgba(201,136,42,0.25);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 4rem;
+            background: linear-gradient(to bottom, rgba(13,9,5,0.95) 0%, rgba(13,9,5,0) 100%);
+            transition: background 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(13,9,5,0.97);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .nav-logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+            margin: 0; padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--cream2);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover { color: var(--gold-light); }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--bg) !important;
+            padding: 0.4rem 1.1rem;
+            border-radius: 2px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover { background: var(--gold-light) !important; color: var(--bg) !important; }
+
+        .nav-current { color: var(--gold-light) !important; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--cream);
+            transition: 0.3s;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 150;
+            background: rgba(10,6,3,0.99);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 3rem;
+            gap: 0;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            padding: 0.65rem 0;
+            transition: color 0.3s;
+            border-bottom: 1px solid rgba(201,136,42,0.12);
+            width: 100%;
+            text-align: center;
+        }
+
+        .mobile-menu a:first-of-type { border-top: 1px solid rgba(201,136,42,0.12); }
+        .mobile-menu a:hover { color: var(--gold-light); }
+
+        .mob-cta {
+            margin-top: 1.5rem !important;
+            background: var(--gold) !important;
+            color: var(--bg) !important;
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 0.95rem !important;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-top: none !important;
+            border-bottom: none !important;
+        }
+
+        .menu-container { padding-top: 120px; }
+
+        @media (max-width: 1024px) {
+            nav { padding: 1rem 2.5rem; }
+            .nav-links { gap: 1.3rem; }
+            .nav-links a { font-size: 0.73rem; }
+            .menu-container { padding-top: 110px; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0.85rem 1.2rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-logo img { height: 78px; }
+            .menu-container { padding-top: 96px; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 0.75rem 1rem; }
+            .nav-logo img { height: 68px; }
+            .menu-container { padding-top: 86px; }
+            .mobile-menu a { font-size: 1.55rem; }
+        }
+
+        @media (max-width: 360px) {
+            .mobile-menu a { font-size: 1.35rem; }
+        }
+
+        @media (min-width: 1280px) {
+            nav { padding: 1.2rem 5rem; }
+        }
+        @media (max-width: 600px) {
+            .menu-title { font-size: 1.8rem; margin-bottom: 30px; }
+            .section-header {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                font-size: 1rem;
+                text-align: center;
+                padding-bottom: 12px;
+            }
+            .menu-row {
+                flex-direction: column;
+                gap: 8px;
+                padding: 18px 0;
+                text-align: center;
+                border-bottom: 1px dashed var(--border-color);
+            }
+            .left-item, .right-item, .full-width-package {
+                text-align: center;
+                width: 100%;
+                font-size: 1.05rem;
+            }
+            .right-item { color: #eaddd0; }
+            .price-hub {
+                margin: 6px 0;
+                background-color: #1a1108;
+                padding: 4px 14px;
+                border-radius: 20px;
+                font-size: 0.95rem;
+                border: 1px solid #2a1e12;
+            }
+            .price-slash { display: none; } 
+
+            
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+    <a href="restaurant.html" class="nav-logo">
+        <img src="images/logo.png" alt="Lasa Restaurant" />
+    </a>
+    <ul class="nav-links">
+        <li><a href="restaurant.html#about">About us</a></li>
+        <li><a href="menu.html"class>Menu</a></li>
+        <li><a href="restaurant.html#gallery">Gallery</a></li>
+        <li><a href="restaurant.html#testimonials">Reviews</a></li>
+        <li><a href="restaurant.html#location">Location</a></li>
+        <li><a href="order.html" class="nav-order">Order Online</a></li>
+        <li><a href="restaurant.html#reservation" class="nav-cta">Reserve</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+    <a href="restaurant.html#about"class="mobile-link">About us</a>
+    <a href="menu.html"class="mobile-link">Menu</a>
+    <a href="restaurant.html#gallery"class="mobile-link">Gallery</a>
+    <a href="restaurant.html#testimonials"class="mobile-link">Reviews</a>
+    <a href="restaurant.html#location"class="mobile-link">Location</a>
+    <a href="order.html"class="mobile-link">Order Online</a>
+    <a href="restaurant.html#reservation" class="mobile-link mob-cta">Reserve a Table</a>
+    </div>
+
+    <div class="menu-container">
+        
+        <div class="menu-title">Menu</div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <div>Boodle Fight</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="full-width-package">
+                    <strong>Lasa Boodle Fight Feast</strong>
+                    <span class="item-desc">A massive banana leaf layout featuring Crispy Pata, Lechon Kawali, Sizzling Pork Sisig, Chicken Inasal, Garlic Butter Shrimp, Grilled Pusit, Inihaw na Tilapia, Pinakbet, Talaba, and Salted Egg Salad. Served over a mountain of Garlic Fried Rice with unlimited Sinigang broth and 2 pitchers of Sago't Gulaman.</span>
+                </div>
+                <div class="price-hub">
+                    <span>5,499</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <div>Pampagana</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Lumpiang Shanghai</div>
+                <div class="price-hub">
+                    <span>180</span>
+                    <span class="price-slash">\</span>
+                    <span>220</span>
+                </div>
+                <div class="right-item">Tokwa't Baboy</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Calamares Fritos</div>
+                <div class="price-hub">
+                    <span>260</span>
+                    <span class="price-slash">\</span>
+                    <span>195</span>
+                </div>
+                <div class="right-item">Chicharon Bulaklak</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Crispy Crablets</div>
+                <div class="price-hub">
+                    <span>240</span>
+                    <span class="price-slash">\</span>
+                    <span>150</span>
+                </div>
+                <div class="right-item">Dynamite Cheese Sticks</div>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <div>Ulam</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Lechon Kawali</div>
+                <div class="price-hub">
+                    <span>350</span>
+                    <span class="price-slash">\</span>
+                    <span>280</span>
+                </div>
+                <div class="right-item">Sizzling Pork Sisig</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Chicken Adobo</div>
+                <div class="price-hub">
+                    <span>290</span>
+                    <span class="price-slash">\</span>
+                    <span>420</span>
+                </div>
+                <div class="right-item">Kare-Kare Oxtail</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Crispy Pata</div>
+                <div class="price-hub">
+                    <span>680</span>
+                    <span class="price-slash">\</span>
+                    <span>310</span>
+                </div>
+                <div class="right-item">Bicol Express</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Kalderetang Baka</div>
+                <div class="price-hub">
+                    <span>450</span>
+                    <span class="price-slash">\</span>
+                    <span>260</span>
+                </div>
+                <div class="right-item">Inihaw na Liempo</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Chicken Inasal</div>
+                <div class="price-hub">
+                    <span>240</span>
+                    <span class="price-slash">\</span>
+                    <span>250</span>
+                </div>
+                <div class="right-item">Pancit Canton Mix</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Pancit Malabon</div>
+                <div class="price-hub">
+                    <span>280</span>
+                    <span class="price-slash">\</span>
+                    <span>390</span>
+                </div>
+                <div class="right-item">Inihaw na Pusit</div>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <div>Kanin</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Sinangag</div>
+                <div class="price-hub">
+                    <span>160</span>
+                    <span class="price-slash">\</span>
+                    <span>180</span>
+                </div>
+                <div class="right-item">Bagoong Rice Platter</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Aligue Rice</div>
+                <div class="price-hub">
+                    <span>210</span>
+                    <span class="price-slash">\</span>
+                    <span>140</span>
+                </div>
+                <div class="right-item">Sisig Fried Rice</div>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <div>Sabaw</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Sinigang na Baboy</div>
+                <div class="price-hub">
+                    <span>360</span>
+                    <span class="price-slash">\</span>
+                    <span>580</span>
+                </div>
+                <div class="right-item">Batangas Bulalo</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Nilagang Baka</div>
+                <div class="price-hub">
+                    <span>410</span>
+                    <span class="price-slash">\</span>
+                    <span>290</span>
+                </div>
+                <div class="right-item">Tinolang Manok</div>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-header">
+                <div>Panghimagas</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Classic Halo-Halo</div>
+                <div class="price-hub">
+                    <span>150</span>
+                    <span class="price-slash">\</span>
+                    <span>120</span>
+                </div>
+                <div class="right-item">Leche Flan Creamy</div>
+            </div>
+
+            <div class="menu-row">
+                <div class="left-item">Ube Puto Bumbong</div>
+                <div class="price-hub">
+                    <span>110</span>
+                    <span class="price-slash">\</span>
+                    <span>130</span>
+                </div>
+                <div class="right-item">Turon ala Mode</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu   = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+        });
+
+    </script>
+
+</body>
+</html>
